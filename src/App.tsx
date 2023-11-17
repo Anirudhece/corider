@@ -1,8 +1,12 @@
 import React from "react";
-
+import Nav from "./scenes/Nav";
 
 function App() {
-  return <div className="App">lorem200</div>;
+  return (
+    <>
+      <Nav />
+    </>
+  );
 }
 
 export default App;
