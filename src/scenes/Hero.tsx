@@ -26,7 +26,7 @@ const IconDrop = () => {
           as={IconButton}
           aria-label="Options"
           icon={<CiMenuKebab />}
-          variant="outline"
+          variant="none"
         />
         <MenuList>
           <MenuItem icon={<MdOutlinePeopleAlt />}>Member</MenuItem>

@@ -1,12 +1,14 @@
 import React from "react";
 import Nav from "./scenes/Nav";
-import Hero from './scenes/Hero';
+import Hero from "./scenes/Hero";
+import Bottom from "./scenes/Bottom";
 
 function App() {
   return (
     <>
       <Nav />
-      <Hero/>
+      <Hero />
+      <Bottom />
     </>
   );
 }
