@@ -1,15 +1,22 @@
 import React, { useEffect, useRef } from "react";
 import { Avatar, Flex, Text } from "@chakra-ui/react";
-interface Message {
-  from: string;
-  text: string;
+interface Chat {
+  id: string;
+  message: string;
+  sender: {
+    image: string;
+    is_kyc_verified: boolean;
+    self: boolean;
+    user_id: string;
+  };
+  time: string;
 }
 
-interface MessagesProps {
-  messages: Message[];
+interface ChatsProps {
+  chats: Chat[];
 }
 
-const Messages: React.FC<MessagesProps> = ({ messages }) => {
+const Messages: React.FC<ChatsProps> = ({ chats }) => {
   const AlwaysScrollToBottom: React.FC = () => {
     const elementRef = useRef<HTMLDivElement>(null);
 
@@ -21,12 +28,11 @@ const Messages: React.FC<MessagesProps> = ({ messages }) => {
 
     return <div ref={elementRef} />;
   };
-  console.log(messages);
 
   return (
     <Flex overflowY="scroll" flexDirection="column" p="4">
-      {messages.map((item, index) => {
-        if (item.from === "me") {
+      {chats.map((item, index) => {
+        if (item.sender.self) {
           return (
             <Flex key={index} w="100%" justify="flex-end">
               <Flex
@@ -38,7 +44,7 @@ const Messages: React.FC<MessagesProps> = ({ messages }) => {
                 p="3"
                 borderRadius=" 20px 20px 0 20px "
               >
-                <Text>{item.text}</Text>
+                <Text>{item.message}</Text>
               </Flex>
             </Flex>
           );
@@ -47,7 +53,7 @@ const Messages: React.FC<MessagesProps> = ({ messages }) => {
             <Flex key={index} w="100%">
               <Avatar
                 name="Computer"
-                src="https://avataaars.io/?avatarStyle=Transparent&topType=LongHairStraight&accessoriesType=Blank&hairColor=BrownDark&facialHairType=Blank&clotheType=BlazerShirt&eyeType=Default&eyebrowType=Default&mouthType=Default&skinColor=Light"
+                src={item.sender.image}
                 bg="blue.300"
               ></Avatar>
               <Flex
@@ -59,7 +65,7 @@ const Messages: React.FC<MessagesProps> = ({ messages }) => {
                 p="3"
                 borderRadius=" 0 20px 20px 20px "
               >
-                <Text>{item.text}</Text>
+                 <Text>{item.message}</Text>
               </Flex>
             </Flex>
           );

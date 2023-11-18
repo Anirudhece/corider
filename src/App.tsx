@@ -4,43 +4,44 @@ import Hero from "./scenes/Hero";
 import Bottom from "./scenes/Bottom";
 import Loader from "./components/Loader";
 import Messages from "./scenes/Messages";
-import { Box, SkeletonCircle, SkeletonText } from "@chakra-ui/react";
+import { Box } from "@chakra-ui/react";
 
 import { useGetChatsQuery } from "./redux/api";
 
-export interface ChatData {
+interface ChatData {
   name: string;
   from: string;
   to: string;
+  chats: Chat[]; // Corrected to use 'chats' instead of 'chat'
 }
-interface Message {
-  from: string;
-  text: string;
+
+interface Chat {
+  id: string;
+  message: string;
+  sender: {
+    image: string;
+    is_kyc_verified: boolean;
+    self: boolean;
+    user_id: string;
+  };
+  time: string;
 }
 
 function App() {
   const { isLoading, data, isError } = useGetChatsQuery();
   const chatData = data as ChatData | undefined;
+  console.log(chatData);
 
-  const message: Message[] = [
-    { from: "computer", text: "Hi, My Name is HoneyChat" },
-    { from: "me", text: "Hey there" },
-    { from: "me", text: "Myself Ferin Patel" },
-    {
-      from: "computer",
-      text: "Nice to meet you. You can send me message and i'll reply you with same message.",
-    },
-  ];
   return (
     <Box bg="orange.50">
-
       {isLoading ? (
         <Loader />
       ) : (
         <>
           {chatData && <Nav name={chatData.name} />}
           {chatData && <Hero from={chatData.from} to={chatData.to} />}
-          <Messages messages={message} />
+          {chatData && <Messages chats={chatData.chats} />}
+          {/* Corrected to use 'chats' instead of 'chat' */}
         </>
       )}
 
