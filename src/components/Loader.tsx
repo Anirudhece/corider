@@ -1,4 +1,3 @@
-import React from "react";
 import { Box, SkeletonCircle, SkeletonText } from "@chakra-ui/react";
 
 function Loader() {

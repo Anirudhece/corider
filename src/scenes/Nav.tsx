@@ -5,7 +5,7 @@ import { FaRegEdit } from "react-icons/fa";
 import { ArrowBackIcon } from "@chakra-ui/icons";
 
 interface NavProps {
-  name: string; // Adjust the type according to your data structure
+  name: string; 
 }
 const Nav: React.FC<NavProps>=({name}) =>{
   return (
@@ -20,12 +20,6 @@ const Nav: React.FC<NavProps>=({name}) =>{
           </Flex>
           <Spacer />
           <Center>
-            {/* <IconButton
-              // variant="outline"
-              // colorScheme="teal"
-              aria-label="edit"
-              icon={<FaRegEdit />}
-            /> */}
             <FaRegEdit />
           </Center>
         </Flex>

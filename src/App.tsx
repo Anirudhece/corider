@@ -12,7 +12,7 @@ interface ChatData {
   name: string;
   from: string;
   to: string;
-  chats: Chat[]; // Corrected to use 'chats' instead of 'chat'
+  chats: Chat[]; 
 }
 
 interface Chat {
@@ -28,7 +28,7 @@ interface Chat {
 }
 
 function App() {
-  const { isLoading, data, isError } = useGetChatsQuery();
+  const { isLoading, data } = useGetChatsQuery();
   const chatData = data as ChatData | undefined;
   console.log(chatData);
 
@@ -41,11 +41,9 @@ function App() {
           {chatData && <Nav name={chatData.name} />}
           {chatData && <Hero from={chatData.from} to={chatData.to} />}
           {chatData && <Messages chats={chatData.chats} />}
-          {/* Corrected to use 'chats' instead of 'chat' */}
+          <Bottom />
         </>
       )}
-
-      <Bottom />
     </Box>
   );
 }

@@ -26,7 +26,7 @@ const Bottom = () => {
 
   return (
     <>
-      <Box p={4} >
+      <Box p={4} mb={3} >
         <Flex w="100%" mt="5">
           <InputGroup bg="white">
             <Input
