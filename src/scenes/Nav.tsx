@@ -4,7 +4,10 @@ import { Box, Spacer, Flex, Text, Center, IconButton } from "@chakra-ui/react";
 import { FaRegEdit } from "react-icons/fa";
 import { ArrowBackIcon } from "@chakra-ui/icons";
 
-function Nav() {
+interface NavProps {
+  name: string; // Adjust the type according to your data structure
+}
+const Nav: React.FC<NavProps>=({name}) =>{
   return (
     <>
       <Box fontSize="xl" p={4}>
@@ -12,7 +15,7 @@ function Nav() {
           <Flex>
             <Center>
               <ArrowBackIcon />
-              <Text as="b">Trip 1</Text>
+              <Text as="b">{name}</Text>
             </Center>
           </Flex>
           <Spacer />

@@ -1,12 +1,10 @@
 import React, { useState } from "react";
 import {
-  Textarea,
   Box,
   Flex,
   Input,
   Button,
   InputGroup,
-  InputRightElement,
   Menu,
   MenuButton,
   IconButton,
@@ -42,9 +40,6 @@ const Bottom = () => {
               onChange={(e) => setInputMessage(e.target.value)}
             />
             <Flex>
-              {/* <Button variant="none">
-                <GrAttachment />
-              </Button> */}
               <Menu>
                 <MenuButton
                   as={IconButton}
