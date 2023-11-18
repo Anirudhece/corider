@@ -40,13 +40,12 @@ const Messages: React.FC<ChatsProps> = ({ chats }) => {
               <Flex
                 bg="blue.500"
                 color="white"
-                minW="100px"
-                maxW="350px"
+                maxW={{ base: "70%", md: "400px" }}
                 my="1"
                 p="3"
                 borderRadius=" 20px 20px 0 20px "
               >
-                <Text>{item.message}</Text>
+                <Text fontSize='md'>{item.message}</Text>
               </Flex>
             </Flex>
           );
@@ -63,13 +62,12 @@ const Messages: React.FC<ChatsProps> = ({ chats }) => {
               <Flex
                 bg="white"
                 color="black"
-                minW="100px"
-                maxW="350px"
+                maxW={{ base: "70%", md: "400px" }}
                 my="1"
                 p="3"
                 borderRadius=" 0 20px 20px 20px "
               >
-                <Text>{item.message}</Text>
+                <Text fontSize='sm'>{item.message}</Text>
               </Flex>
             </Flex>
           );
