@@ -1,5 +1,7 @@
 import React, { useEffect, useRef } from "react";
-import { Avatar, Flex, Text } from "@chakra-ui/react";
+import { Avatar, Flex, Text, AvatarBadge } from "@chakra-ui/react";
+import { RiVerifiedBadgeLine } from "react-icons/ri";
+
 interface Chat {
   id: string;
   message: string;
@@ -51,11 +53,13 @@ const Messages: React.FC<ChatsProps> = ({ chats }) => {
         } else {
           return (
             <Flex key={index} w="100%">
-              <Avatar
-                name="Computer"
-                src={item.sender.image}
-                bg="blue.300"
-              ></Avatar>
+              <Avatar src={item.sender.image} bg="blue.300">
+                {item.sender.is_kyc_verified && (
+                  <AvatarBadge boxSize="1.25em" bg="blue.300">
+                    <RiVerifiedBadgeLine />
+                  </AvatarBadge>
+                )}
+              </Avatar>
               <Flex
                 bg="white"
                 color="black"
@@ -65,7 +69,7 @@ const Messages: React.FC<ChatsProps> = ({ chats }) => {
                 p="3"
                 borderRadius=" 0 20px 20px 20px "
               >
-                 <Text>{item.message}</Text>
+                <Text>{item.message}</Text>
               </Flex>
             </Flex>
           );
