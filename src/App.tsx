@@ -2,6 +2,7 @@ import React from "react";
 import Nav from "./scenes/Nav";
 import Hero from "./scenes/Hero";
 import Bottom from "./scenes/Bottom";
+import Loader from "./components/Loader";
 
 import { useGetChatsQuery } from "./redux/api";
 export interface ChatData {
@@ -16,9 +17,15 @@ function App() {
   chatData && console.log(chatData);
   return (
     <>
-      {chatData && <Nav name={chatData.name} />}
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <>
+          {chatData && <Nav name={chatData.name} />}
+          {chatData && <Hero from={chatData.from} to={chatData.to} />}
+        </>
+      )}
 
-      {chatData && <Hero from={chatData.from} to={chatData.to} />}
       <Bottom />
     </>
   );
