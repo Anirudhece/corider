@@ -24,18 +24,19 @@ const Messages: React.FC<MessagesProps> = ({ messages }) => {
   console.log(messages);
 
   return (
-    <Flex w="100%" h="80%" overflowY="scroll" flexDirection="column" p="3">
+    <Flex overflowY="scroll" flexDirection="column" p="4">
       {messages.map((item, index) => {
         if (item.from === "me") {
           return (
             <Flex key={index} w="100%" justify="flex-end">
               <Flex
-                bg="black"
+                bg="blue.500"
                 color="white"
                 minW="100px"
                 maxW="350px"
                 my="1"
                 p="3"
+                borderRadius=" 20px 20px 0 20px "
               >
                 <Text>{item.text}</Text>
               </Flex>
@@ -50,12 +51,13 @@ const Messages: React.FC<MessagesProps> = ({ messages }) => {
                 bg="blue.300"
               ></Avatar>
               <Flex
-                bg="gray.100"
+                bg="white"
                 color="black"
                 minW="100px"
                 maxW="350px"
                 my="1"
                 p="3"
+                borderRadius=" 0 20px 20px 20px "
               >
                 <Text>{item.text}</Text>
               </Flex>

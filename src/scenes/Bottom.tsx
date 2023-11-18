@@ -26,9 +26,9 @@ const Bottom = () => {
 
   return (
     <>
-      <Box p={4}>
+      <Box p={4} >
         <Flex w="100%" mt="5">
-          <InputGroup>
+          <InputGroup bg="white">
             <Input
               placeholder="Type Something..."
               border="none"

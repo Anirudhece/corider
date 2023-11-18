@@ -4,6 +4,7 @@ import Hero from "./scenes/Hero";
 import Bottom from "./scenes/Bottom";
 import Loader from "./components/Loader";
 import Messages from "./scenes/Messages";
+import { Box, SkeletonCircle, SkeletonText } from "@chakra-ui/react";
 
 import { useGetChatsQuery } from "./redux/api";
 
@@ -21,7 +22,7 @@ function App() {
   const { isLoading, data, isError } = useGetChatsQuery();
   const chatData = data as ChatData | undefined;
 
-  const message: Message[]= [
+  const message: Message[] = [
     { from: "computer", text: "Hi, My Name is HoneyChat" },
     { from: "me", text: "Hey there" },
     { from: "me", text: "Myself Ferin Patel" },
@@ -31,19 +32,20 @@ function App() {
     },
   ];
   return (
-    <>
+    <Box bg="orange.50">
+
       {isLoading ? (
         <Loader />
       ) : (
         <>
           {chatData && <Nav name={chatData.name} />}
-          <Messages messages={message} />
           {chatData && <Hero from={chatData.from} to={chatData.to} />}
+          <Messages messages={message} />
         </>
       )}
 
       <Bottom />
-    </>
+    </Box>
   );
 }
 
