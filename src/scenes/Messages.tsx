@@ -33,10 +33,10 @@ const Messages: React.FC<ChatsProps> = ({ chats }) => {
 
   return (
     <Flex overflowY="scroll" flexDirection="column" p="4">
-      {chats.map((item, index) => {
+      {chats.map((item) => {
         if (item.sender.self) {
           return (
-            <Flex key={index} w="100%" justify="flex-end">
+            <Flex key={item.id} w="100%" justify="flex-end">
               <Flex
                 bg="blue.500"
                 color="white"
@@ -51,7 +51,7 @@ const Messages: React.FC<ChatsProps> = ({ chats }) => {
           );
         } else {
           return (
-            <Flex key={index} w="100%">
+            <Flex key={item.id} w="100%">
               <Avatar src={item.sender.image} bg="blue.300">
                 {item.sender.is_kyc_verified && (
                   <AvatarBadge boxSize="1.25em" bg="blue.300">
